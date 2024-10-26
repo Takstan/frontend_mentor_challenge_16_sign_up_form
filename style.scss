@@ -1,0 +1,217 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  color: #444;
+  line-height: 1.6;
+
+  background-image: linear-gradient(rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0.5)),
+    url("./images/bg-intro-desktop.png");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns:
+    [full-start] 1fr [center-start] repeat(
+      8,
+      [col-start] minmax(min-content, 14rem) [col-end]
+    )
+    [center-end] 1fr [full-end];
+
+  transition: all 0.5s;
+  padding: 2rem;
+}
+
+.main {
+  height: 100vh;
+  grid-column: center-start / center-end;
+  // padding: 2rem;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+
+  @media only screen and (max-width: 42em) {
+    padding: 2rem;
+    grid-template-columns: 1fr;
+    row-gap: 5rem;
+    padding: 10rem 3rem;
+  }
+}
+
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  color: #fff;
+
+  &__heading {
+    font-size: clamp(3rem, 1.3697478991596639rem + 2.5210084033613445vw, 5rem);
+    line-height: 1;
+
+    @media only screen and (max-width: 42em) {
+      text-align: center;
+      line-height: 1.2;
+    }
+  }
+
+  &__paragraph {
+    // font-size: 1.6rem;
+    font-size: clamp(
+      1rem,
+      1.3697478991596639rem + 2.5210084033613445vw,
+      1.6rem
+    );
+
+    @media only screen and (max-width: 42em) {
+      text-align: center;
+      // line-height: 1.2;
+    }
+  }
+}
+
+.sign-up-promo {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+
+  &__heading {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 8px 2.6px;
+    background-color: hsl(248, 32%, 49%);
+    border-radius: 10px;
+    padding: 2rem 6rem;
+    text-align: center;
+
+    h2 {
+      color: hsl(246, 25%, 77%);
+    }
+
+    span {
+      color: #fff;
+    }
+  }
+
+  .form {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 8px 2.6px;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    gap: 2rem;
+
+    @media only screen and (max-width: 42em) {
+      margin-bottom: 5rem;
+      padding: 2rem;
+    }
+
+    input {
+      padding: 2rem;
+      font-weight: 600;
+      border-radius: 5px;
+      border: 1px solid hsl(245, 11%, 81%);
+      color: hsl(249, 10%, 26%);
+
+      &:focus,
+      textarea:focus {
+        outline: 1px solid hsl(249, 10%, 26%);
+        // color: hsl(249, 10%, 26%);
+      }
+
+      // &:invalid:not(:placeholder-shown) {
+      //   border-color: red;
+      //   background-image: url("./images/icon-error.svg");
+      //   background-repeat: no-repeat;
+      //   background-position: calc(100% - 10px);
+      //   outline: none;
+      // }
+
+      &:invalid:not(:placeholder-shown) + p {
+        color: red;
+        text-align: inherit;
+        // display: none;
+      }
+
+      &:invalid ~ button[type="submit"] {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+    }
+
+    button {
+      padding: 2rem;
+      background-color: hsl(154, 59%, 51%);
+      border: none;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.15) 0 2px 2.6px;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.5s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: hsl(154, 41%, 51%);
+      }
+
+      &:active {
+        transform: translateY(2px);
+        box-shadow: none;
+      }
+    }
+
+    p {
+      display: none;
+    }
+
+    .sign-up__terms {
+      text-align: center;
+      font-size: 1.2rem;
+      color: hsl(246, 25%, 77%);
+
+      span {
+        color: hsl(0, 100%, 74%);
+        font-weight: 600;
+      }
+    }
+
+    .input--text {
+      color: red;
+      display: none;
+    }
+
+    .input--error {
+      border-color: red;
+      background-image: url("./images/icon-error.svg");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 10px);
+      // outline: none;
+    }
+
+    .input--success {
+      border-color: red;
+      background-image: url("./images/tick-mark.png");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 10px);
+      // outline: none;
+    }
+  }
+}
